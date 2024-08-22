@@ -26,9 +26,6 @@ export default class ApplicationController extends Controller {
     } catch (error) {
       this.notify?.error('Cannot load repositories');
       console.log(error);
-    } finally {
-      this.organization = '';
-      this.accessToken.updateToken('');
     }
   });
 
@@ -40,11 +37,11 @@ export default class ApplicationController extends Controller {
 
   @action
   updateOrganization(event) {
-    this.organization = event.target.value;
+    this.organization = event.target.value.toLowerCase().trim();
   }
 
   @action
   updateAccessToken(event) {
-    this.accessToken.updateToken(event.target.value);
+    this.accessToken.updateToken(event.target.value).trim();
   }
 }
