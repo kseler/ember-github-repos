@@ -32,7 +32,7 @@
   {{#if this.loadRepositoriesTask.isRunning}}
     <span class="spinner"></span>
   {{else}}
-    {{log this.repositories}}
+    <RepositoryList @repositories={{this.repositories}} />
   {{/if}}
 </div>
 <EmberNotify />

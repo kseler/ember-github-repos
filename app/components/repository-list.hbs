@@ -1,0 +1,33 @@
+<div class="repository-wrapper" data-test-repository-wrapper>
+  <label>
+    Visibility
+    <select {{on "change" this.updateVisibilityOption}} data-test-visibility-select>
+      <option value="all">All</option>
+      <option value="public">Public</option>
+      <option value="private">Private</option>
+    </select>
+  </label>
+
+  <label>
+    Filter by Language:
+    <input
+      type="text"
+      value={{this.filterLanguage}}
+      {{on "input" this.updateFilterLanguage}}
+      data-test-language
+    >
+  </label>
+
+  {{#if this.filteredRepositories.length}}
+    <div class="repository-list" data-test-repository-list>
+      {{#each this.filteredRepositories as |repo|}}
+        <Ui::Accordion
+          @name={{repo.name}}
+          @language={{repo.language}}
+          @visibility={{if repo.private "private" "public" }}
+          @href={{repo.htmlUrl}}
+        />
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
