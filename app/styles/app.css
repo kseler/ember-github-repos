@@ -145,7 +145,6 @@ li::before {
   padding-left: 16px;
 }
 
-
 .accordion {
   display: flex;
   flex-direction: column;
