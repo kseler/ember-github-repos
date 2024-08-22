@@ -7,13 +7,13 @@ import { task } from 'ember-concurrency';
 export default class ApplicationController extends Controller {
   @inject('store') store;
   @inject('notify') notify;
+  @inject('access-token') accessToken;
 
   @tracked organization = '';
   @tracked repositories = [];
 
-  @action
-  updateOrganization(event) {
-    this.organization = event.target.value;
+  get token() {
+    return this.accessToken.token;
   }
 
   loadRepositoriesTask = task(async () => {
@@ -28,6 +28,7 @@ export default class ApplicationController extends Controller {
       console.log(error);
     } finally {
       this.organization = '';
+      this.accessToken.updateToken('');
     }
   });
 
@@ -35,5 +36,15 @@ export default class ApplicationController extends Controller {
   async loadRepositories() {
     this.repositories = [];
     this.loadRepositoriesTask.perform();
+  }
+
+  @action
+  updateOrganization(event) {
+    this.organization = event.target.value;
+  }
+
+  @action
+  updateAccessToken(event) {
+    this.accessToken.updateToken(event.target.value);
   }
 }

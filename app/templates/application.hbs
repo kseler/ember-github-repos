@@ -16,7 +16,12 @@
 
   <label>
     Token
-    <input type="text" placeholder="Enter access token">
+    <input
+      type="text"
+      placeholder="Enter access token"
+      value={{this.token}}
+      {{on "input" this.updateAccessToken}}
+    >
   </label>
 
 
