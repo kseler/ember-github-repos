@@ -7,20 +7,14 @@ module('Integration | Component | repository-list', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+    this.repositories = [];
 
-    await render(hbs`<RepositoryList />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
     await render(hbs`
-      <RepositoryList>
-        template block text
-      </RepositoryList>
+      <RepositoryList @repositories={{this.repositories}} />
     `);
 
-    assert.dom().hasText('template block text');
+    assert.dom('[data-test-repository-wrapper]').exists();
+    assert.dom('[data-test-visibility-select]').exists();
+    assert.dom('[data-test-language]').exists();
   });
 });
