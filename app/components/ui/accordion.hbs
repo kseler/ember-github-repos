@@ -1,0 +1,35 @@
+<div class="accordion" data-test-accordion>
+  <button class="accordion-button" type="button" data-test-accordion-button {{on "click" this.toggleExpanded}}>
+    <span class="accordion-name" data-test-accordion-name>{{@name}}</span>
+    {{#if @language}}
+      <span
+        class="chip"
+        data-test-accordion-lang
+      >
+        {{@language}}
+      </span>
+    {{/if}}
+
+    <span
+      class="chip"
+      data-visibility={{@visibility}}
+    >
+      {{@visibility}}
+    </span>
+
+    <a
+      class="accordion-link"
+      href={{@href}}
+      target="_blank"
+      rel="noopener noreferrer"
+      {{on "click" this.handleLinkClick}}>
+      Go to repo
+    </a>
+  </button>
+
+  {{#if this.isExpanded}}
+    <div class="accordion-body" data-test-accordion-body>
+      {{yield}}
+    </div>
+  {{/if}}
+</div>
