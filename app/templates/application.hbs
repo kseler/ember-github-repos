@@ -29,7 +29,7 @@
     type="button"
     disabled={{not this.organization}}
     {{on "click" this.loadRepositories}}
-    data-test-load-repo
+    data-test-load-repos
   >
     Load Repositories
   </button>
@@ -39,7 +39,7 @@
   {{else if this.repositories.length}}
     <RepositoryList @repositories={{this.repositories}} />
   {{else}}
-    <span class="message">Repositories will appear here</span>
+    <span class="message" data-app-message>Repositories will appear here</span>
   {{/if}}
 </div>
 <EmberNotify />
