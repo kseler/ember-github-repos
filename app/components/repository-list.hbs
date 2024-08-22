@@ -26,8 +26,12 @@
           @language={{repo.language}}
           @visibility={{if repo.private "private" "public" }}
           @href={{repo.htmlUrl}}
-        />
+        >
+          <BranchList @repo={{repo.fullName}} />
+        </Ui::Accordion>
       {{/each}}
     </div>
+  {{else}}
+    <span class="message">No repos to show</span>
   {{/if}}
 </div>

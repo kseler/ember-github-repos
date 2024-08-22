@@ -79,6 +79,28 @@ label {
   font-weight: bold;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font-size: 1rem;
+  color: #2c3e50;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+li::before {
+  content: "\2022";
+  color: #3498db;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  display: inline-block;
+}
+
 .spinner {
   border: 8px solid #d3d3d3;
   border-top: 8px solid #3498db;
@@ -108,6 +130,21 @@ label {
   flex-direction: column;
   gap: 8px;
 }
+
+.branches-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.branches-count {
+  display: flex;
+  align-items: center;
+  color: #5d5a5a;
+  padding-left: 16px;
+}
+
 
 .accordion {
   display: flex;
@@ -174,4 +211,11 @@ label {
 .chip[data-visibility="private"] {
   background-color: #e74c3c;
   color: #fff;
+}
+
+.message {
+  color: #5d5a5a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
 }
