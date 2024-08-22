@@ -1,7 +1,38 @@
-{{page-title "EmberGithubRepos"}}
+{{page-title "Ember Github Repos"}}
 
-{{outlet}}
+<div class="container">
+  <h1>GitHub Repositories</h1>
 
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
+  <label>
+    Organization name
+    <input
+      type="text"
+      value={{this.organization}}
+      placeholder="Enter organization name"
+      {{on "input" this.updateOrganization}}
+      data-test-organization-name
+    >
+  </label>
+
+  <label>
+    Token
+    <input type="text" placeholder="Enter access token">
+  </label>
+
+
+  <button
+    type="button"
+    disabled={{not this.organization}}
+    {{on "click" this.loadRepositories}}
+    data-test-load-repo
+  >
+    Load Repositories
+  </button>
+
+  {{#if this.loadRepositoriesTask.isRunning}}
+    <span class="spinner"></span>
+  {{else}}
+    {{log this.repositories}}
+  {{/if}}
+</div>
+<EmberNotify />
