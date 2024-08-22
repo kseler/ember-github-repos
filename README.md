@@ -1,7 +1,10 @@
 # ember-github-repos
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Ember app for listing branches and repositories for a specified organization.
+
+[Link to app](https://ember-github-repos.netlify.app/)
+
+Supported browser: Google Chrome v127.0.6533.120
 
 ## Prerequisites
 
@@ -37,20 +40,3 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 - `npm run lint`
 - `npm run lint:fix`
-
-### Building
-
-- `npm exec ember build` (development)
-- `npm run build` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-- [ember.js](https://emberjs.com/)
-- [ember-cli](https://cli.emberjs.com/release/)
-- Development Browser Extensions
-  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
