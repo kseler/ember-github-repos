@@ -36,8 +36,10 @@
 
   {{#if this.loadRepositoriesTask.isRunning}}
     <span class="spinner"></span>
-  {{else}}
+  {{else if this.repositories.length}}
     <RepositoryList @repositories={{this.repositories}} />
+  {{else}}
+    <span class="message">Repositories will appear here</span>
   {{/if}}
 </div>
 <EmberNotify />

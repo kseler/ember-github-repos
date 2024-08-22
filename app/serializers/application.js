@@ -4,7 +4,6 @@ import { guidFor } from '@ember/object/internals';
 
 export default class ApplicationSerializer extends JSONAPISerializer {
   normalizeArrayResponse(store, primaryModelClass, payload) {
-    console.log(payload);
     payload = payload.map((item) => ({
       id: item.id ?? guidFor(item),
       type: primaryModelClass.modelName,
