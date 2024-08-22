@@ -1,26 +1,27 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-github-repos/tests/helpers';
-import { render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | ui/accordion', function (hooks) {
+module('Integration | Component | accordion', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    await render(hbs`<Ui::Accordion />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
     await render(hbs`
-      <Ui::Accordion>
-        template block text
+      <Ui::Accordion
+        @name="rails"
+        @language="Ruby"
+        @visibility="public"
+      >
+        Ruby is awesome
       </Ui::Accordion>
     `);
 
-    assert.dom().hasText('template block text');
+    assert.dom('[data-test-accordion-name]').hasText('rails');
+    assert.dom('[data-test-accordion-lang]').hasText('Ruby');
+    assert.dom('[data-visibility="public"]').hasText('public');
+
+    await click('[data-test-accordion-button]');
+    assert.dom('[data-test-accordion-body]').hasText('Ruby is awesome');
   });
 });
